@@ -1,4 +1,4 @@
-import PrimaryButton from '@/app/components/button';
+import AuthForm from "./components/auth-form";
 
 export default function Home() {
   return (
@@ -8,14 +8,9 @@ export default function Home() {
           VendEase
         </h1>
       </div>
-      <div className="mt-16 mx-auto">
-        <div className="flex flex-wrap gap-8 items-center justify-center">
-          <PrimaryButton variant="outlined">
-            Зарегистрироваться как сотрудтник
-          </PrimaryButton>
-          <PrimaryButton variant="outlined">
-            Зарегистрировать компанию
-          </PrimaryButton>
+      <div className="mx-auto">
+        <div>
+          <AuthForm />
         </div>
       </div>
     </div>
