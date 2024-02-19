@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@material-tailwind/react';
+import { Button } from '@material-tailwind/react/components/Button';
 
 interface ButtonPrimaryProps {
   children?: React.ReactNode;
@@ -14,7 +14,7 @@ const PrimaryButton: React.FC<ButtonPrimaryProps> = ({
   variant,
 }) => {
   return (
-    <Button placeholder={placeholder} size="md" variant={variant}>
+    <Button placeholder={placeholder} size="md" variant={variant} fullWidth>
       {children}
     </Button>
   );
