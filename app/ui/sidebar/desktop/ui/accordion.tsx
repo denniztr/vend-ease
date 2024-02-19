@@ -25,7 +25,7 @@ import {
 
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
-const ItemsList = () => {
+const AccordionUi = () => {
   const [open, setOpen] = useState(0);
 
   const handleClick = (value: number) => {
@@ -108,4 +108,4 @@ const ItemsList = () => {
   );
 };
 
-export default ItemsList;
+export default AccordionUi;

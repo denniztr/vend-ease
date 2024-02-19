@@ -1,4 +1,4 @@
-import ItemsList from "./ui/items-list";
+import AccordionUi from "./ui/accordion";
 
 const SidebarDesktop = () => {
   return (
@@ -6,7 +6,7 @@ const SidebarDesktop = () => {
       <div className="mb-5 p-4">
         <h5 className="font-semibold text-gray-700">VendEase</h5>
       </div>
-      <ItemsList />
+      <AccordionUi />
     </div>
   );
 };
