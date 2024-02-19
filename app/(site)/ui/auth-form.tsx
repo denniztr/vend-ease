@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import PrimaryInput from '@/app/ui/input';
 import PrimaryButton from '@/app/ui/button';
@@ -8,12 +9,17 @@ import PrimaryButton from '@/app/ui/button';
 type Variant = 'LOGIN' | 'REGISTER';
 
 export const AuthForm = () => {
+  const router = useRouter();
   const [variant, setVariant] = useState<Variant>('LOGIN');
 
   const toggleVariant = useCallback(() => {
     if (variant === 'LOGIN') setVariant('REGISTER');
     if (variant === 'REGISTER') setVariant('LOGIN');
   }, [variant]);
+
+  const handleClick = () => {
+    router.push('/dashboard')
+  }
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -29,7 +35,7 @@ export const AuthForm = () => {
           />
           <PrimaryInput label="Пароль" type="password" variant="standard" />
           <div className="py-6">
-            <PrimaryButton>
+            <PrimaryButton onClick={handleClick}>
               {variant === 'REGISTER' ? 'Зарегистрироваться' : 'Войти'}
             </PrimaryButton>
           </div>
