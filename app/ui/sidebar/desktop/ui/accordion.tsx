@@ -1,6 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+
+import useRoutes from '@/app/hooks/use-routes';
+import SidebarItem from './item';
 
 import {
   List,
@@ -14,18 +18,13 @@ import {
   Chip,
 } from '@material-tailwind/react';
 
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-} from '@heroicons/react/24/solid';
+import { PresentationChartBarIcon } from '@heroicons/react/24/solid';
 
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const AccordionUi = () => {
+  const routes = useRoutes();
+
   const [open, setOpen] = useState(0);
 
   const handleClick = (value: number) => {
@@ -71,39 +70,14 @@ const AccordionUi = () => {
         </AccordionBody>
       </Accordion>
       <hr className="my-2 border-blue-gray-50" />
-      <ListItem>
-        <ListItemPrefix>
-          <InboxIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Сообщения
-        <ListItemSuffix>
-          <Chip
-            value="14"
-            size="sm"
-            variant="ghost"
-            color="blue-gray"
-            className="rounded-full"
-          />
-        </ListItemSuffix>
-      </ListItem>
-      <ListItem>
-        <ListItemPrefix>
-          <UserCircleIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Профиль
-      </ListItem>
-      <ListItem>
-        <ListItemPrefix>
-          <Cog6ToothIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Настройки
-      </ListItem>
-      <ListItem>
-        <ListItemPrefix>
-          <PowerIcon className="h-5 w-5" />
-        </ListItemPrefix>
-        Выйти
-      </ListItem>
+      {routes.map((item) => (
+        <SidebarItem
+          key={item.label}
+          label={item.label}
+          href={item.href}
+          iconPreffix={item.iconPreffix}
+        />
+      ))}
     </List>
   );
 };
