@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 
 import { ListItem, ListItemPrefix } from '@material-tailwind/react';

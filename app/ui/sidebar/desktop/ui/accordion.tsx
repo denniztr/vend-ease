@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 
 import useRoutes from '@/app/hooks/use-routes';
 import SidebarItem from './item';
@@ -30,6 +29,7 @@ const AccordionUi = () => {
   const handleClick = (value: number) => {
     setOpen(open === value ? 0 : value);
   };
+  
   return (
     <List>
       <Accordion
