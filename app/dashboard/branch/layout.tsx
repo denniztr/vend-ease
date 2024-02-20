@@ -13,7 +13,6 @@ export default async function BranchPage({
 }) {
 
 
-
   return (
     <main className="h-full flex flex-col">
       <div>{children}</div>
