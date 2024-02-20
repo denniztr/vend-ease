@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 
+import {branches} from '@/app/mockdata/branches';
 import useRoutes from '@/app/hooks/use-routes';
+
 import SidebarItem from './item';
 
 import {
@@ -20,6 +22,7 @@ import {
 import { PresentationChartBarIcon } from '@heroicons/react/24/solid';
 
 import { ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import BranchItem from './branch-item';
 
 const AccordionUi = () => {
   const routes = useRoutes();
@@ -29,7 +32,7 @@ const AccordionUi = () => {
   const handleClick = (value: number) => {
     setOpen(open === value ? 0 : value);
   };
-  
+
   return (
     <List>
       <Accordion
@@ -58,14 +61,14 @@ const AccordionUi = () => {
         </ListItem>
         <AccordionBody className="py-1">
           <List className="p-0 max-h-[28rem] overflow-y-auto">
-            <ListItem>Великие Луки</ListItem>
-            <ListItem>Псков</ListItem>
-            <ListItem>Санкт-Петербург</ListItem>
-            <ListItem>Москва</ListItem>
-            <ListItem>Великий Новгород</ListItem>
-            <ListItem>Смоленск</ListItem>
-            <ListItem>Брянск</ListItem>
-            <ListItem>Тверь</ListItem>
+            {branches.map((item) => (
+              <BranchItem 
+                key={item.id}
+                id={item.id}
+                href={item.href}
+                label={item.label}
+              />
+            ))}
           </List>
         </AccordionBody>
       </Accordion>
