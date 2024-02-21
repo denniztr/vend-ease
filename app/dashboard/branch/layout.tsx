@@ -1,7 +1,3 @@
-import getBranchByIndex from '@/app/actions/get-branch';
-
-// доделать динамическое получение значений из url
-
 export default async function BranchPage({
   params,
   children,
