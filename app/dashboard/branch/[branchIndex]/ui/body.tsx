@@ -4,7 +4,7 @@ interface BodyProps {
   branch: any
 }
 
-const Body: React.FC<BodyProps> = ({ branch })  =>{
+const Body: React.FC<BodyProps> = ({ branch })  => {
   return <h1>{branch.label}</h1>;
 }
 
