@@ -1,7 +1,10 @@
+'use client';
+
 import { branches } from '../mockdata/branches';
 
 const getBranchByIndex = (branchIndex: string) => {
-  console.log(branchIndex)
+  const branch = branches.find((item) => item.href === branchIndex)
+  return branch
 };
 
 export default getBranchByIndex;
