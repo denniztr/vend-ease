@@ -55,7 +55,7 @@ const useRoutes = () => {
         onClick: () => {},
       },
     ],
-    [pathname]
+    []
   );
   
   return routes;
