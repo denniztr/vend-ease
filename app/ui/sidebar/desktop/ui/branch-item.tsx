@@ -13,7 +13,6 @@ const BranchItem: React.FC<BranchItemProps> = ({ id, href, label }) => {
   const router = useRouter();
   
   const handleClick = () => {
-    // router.push(`/dashboard/branch/${href}`);
     router.push(`/dashboard/${href}`);
   };
 
