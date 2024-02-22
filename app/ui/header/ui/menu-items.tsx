@@ -1,5 +1,5 @@
 import { MenuList, MenuItem, Input } from '@material-tailwind/react';
-
+import Link from 'next/link';
 import { Branch } from '@/app/interface/branch';
 
 interface MenuItemsProps {
@@ -15,9 +15,15 @@ const MenuItems: React.FC<MenuItemsProps> = ({ branch }) => {
           className: 'mb-2',
         }}
       />
-      <div className='max-h-[20rem] overflow-y-auto'>
+      <div className="max-h-[20rem] overflow-y-auto">
         {branch.equipments.map((item) => (
-          <MenuItem key={item.id}>{item.label}</MenuItem>
+          <Link
+            key={item.id}
+            href="/dashboard/[branch]/equipments/[id]"
+            as={`/dashboard/${branch.href}/equipments/${item.id}`}
+          >
+            <MenuItem>{item.label}</MenuItem>
+          </Link>
         ))}
       </div>
     </MenuList>

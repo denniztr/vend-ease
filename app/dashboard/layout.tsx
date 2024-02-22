@@ -1,6 +1,10 @@
 import Sidebar from '@/app/ui/sidebar/sidebar';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="h-screen flex flex-col md:flex-row md:overflow-hidden bg-blue-100/15">
       <div className="w-full flex-none md:w-[20rem]">
