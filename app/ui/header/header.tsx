@@ -1,17 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-
 import { Menu, MenuHandler } from '@material-tailwind/react';
-
 import { BellIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-
 import Avatar from '@/app/ui/avatar';
-
 import MenuItems from './ui/menu-items';
 
 import clsx from 'clsx';
+
 
 interface HeaderProps {
   branch: any;

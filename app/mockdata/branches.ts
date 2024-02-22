@@ -44,7 +44,7 @@ export const branches: any = [
         ],
       },
       {
-        id: 103,
+        id: 104,
         label: 'Стройсам-2',
         address: 'Великие Луки, 3 Ударной Армии, 66',
         equipment: 'Saeco Снэк',
