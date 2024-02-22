@@ -13,32 +13,27 @@ import MenuItems from './ui/menu-items';
 
 import clsx from 'clsx';
 
-
 interface HeaderProps {
   branch: any;
 }
 
 const Header: React.FC<HeaderProps> = ({ branch }) => {
   const [open, setOpen] = useState(false);
-  console.log(branch)
   return (
     <div className="w-full py-2 px-6 flex flex-row justify-between items-center">
-      <Menu 
+      <Menu
         dismiss={{
           itemPress: false,
         }}
       >
-        <MenuHandler>
-          <div
-            className="cursor-pointer p-2 flex flex-row items-center gap-3 transition hover:shadow hover:rounded-sm hover:bg-blue-gray-50/5"
-            onClick={() => setOpen(!open)}
-          >
+        <MenuHandler onClick={() => setOpen(!open)}>
+          <div className="cursor-pointer p-2 flex flex-row items-center gap-3 transition hover:shadow hover:rounded-sm">
             <h4 className="font-semibold text-xl text-gray-700">
               {branch.label}
             </h4>
             <ChevronDownIcon
               className={clsx(`h-4 w-4 text-gray-700`, open && 'rotate-180')}
-            /> 
+            />
           </div>
         </MenuHandler>
         <MenuItems branch={branch} />

@@ -3,10 +3,10 @@ import { MenuList, MenuItem, Input } from '@material-tailwind/react';
 import { Branch } from '@/app/interface/branch';
 
 interface MenuItemsProps {
-  branch: Branch
+  branch: Branch;
 }
 
-const MenuItems: React.FC<MenuItemsProps> = ({branch}) => {
+const MenuItems: React.FC<MenuItemsProps> = ({ branch }) => {
   return (
     <MenuList>
       <Input
@@ -15,9 +15,11 @@ const MenuItems: React.FC<MenuItemsProps> = ({branch}) => {
           className: 'mb-2',
         }}
       />
-      {branch.equipments.map((item) => (
-        <MenuItem key={item.id}>{item.label}</MenuItem>
-      ))}
+      <div className='max-h-[20rem] overflow-y-auto'>
+        {branch.equipments.map((item) => (
+          <MenuItem key={item.id}>{item.label}</MenuItem>
+        ))}
+      </div>
     </MenuList>
   );
 };
