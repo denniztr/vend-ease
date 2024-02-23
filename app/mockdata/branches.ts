@@ -1,7 +1,7 @@
 export const branches: any = [
   {
     id: 1,
-    href: 'velikie-luki',
+    path: 'velikie-luki',
     label: 'Великие Луки',
     equipments: [
       {
@@ -65,7 +65,7 @@ export const branches: any = [
   },
   {
     id: 2,
-    href: 'pskov',
+    path: 'pskov',
     label: 'Псков',
     equipments: [
       {
@@ -124,7 +124,7 @@ export const branches: any = [
   },
   {
     id: 3,
-    href: 'moscow',
+    path: 'moscow',
     label: 'Москва',
     equipments: [
       {
@@ -134,7 +134,7 @@ export const branches: any = [
   },
   {
     id: 4,
-    href: 'smolensk',
+    path: 'smolensk',
     label: 'Смоленск',
     equipments: [
       {
@@ -144,7 +144,7 @@ export const branches: any = [
   },
   {
     id: 5,
-    href: 'saint-petersburg',
+    path: 'saint-petersburg',
     label: 'Санкт Петербург',
     equipments: [
       {

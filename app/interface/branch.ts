@@ -14,7 +14,7 @@ export interface Equipment {
 
 export interface Branch {
   id: number;
-  href: string;
+  path: string;
   label: string;
   equipments: Equipment[];
 }

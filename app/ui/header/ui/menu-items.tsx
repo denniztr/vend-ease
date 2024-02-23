@@ -20,7 +20,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({ branch }) => {
           <Link
             key={item.id}
             href="/dashboard/[branch]/equipments/[id]"
-            as={`/dashboard/${branch.href}/equipments/${item.id}`}
+            as={`/dashboard/${branch.path}/equipments/${item.id}`}
           >
             <MenuItem>{item.label}</MenuItem>
           </Link>
