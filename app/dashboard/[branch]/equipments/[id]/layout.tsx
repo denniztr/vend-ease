@@ -4,7 +4,7 @@ export default async function BranchPage({
   children: React.ReactNode;
 }) {
   return (
-    <main className="h-full w-full">
+    <main className="h-full">
       <div>{children}</div>
     </main>
   );

@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ branch }) => {
     <div className="w-full py-2 px-6 flex flex-row justify-between items-center">
       <Menu
         dismiss={{
-          itemPress: false,
+          itemPress: true,
         }}
       >
         <MenuHandler onClick={() => setOpen(!open)}>

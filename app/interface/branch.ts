@@ -9,6 +9,7 @@ export interface Equipment {
   label: string;
   address: string;
   equipment: string;
+  serial_number: string;
   service: Service[];
 }
 
