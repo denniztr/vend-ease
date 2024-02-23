@@ -2,11 +2,8 @@ import { Branch } from '@/app/interface/branch';
 
 import { branches } from '@/app/mockdata/branches';
 
-const getEquipmentByIndex = async (branch: string, equipmentId: number) => {
-  // console.log(equipmentId);
-  // console.log(branches[0].equipments);
-  console.log(branches);
-  console.log(branch, equipmentId);
+const getEquipmentByIndex = async (branch: string, equipmentId: string) => {
+ return branches.find((el: Branch) => el.path === branch).equipments.find((el: any) => el.id === Number(equipmentId))
 };
 
 export default getEquipmentByIndex;

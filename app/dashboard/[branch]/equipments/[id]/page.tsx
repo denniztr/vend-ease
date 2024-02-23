@@ -1,10 +1,17 @@
 import getEquipmentByIndex from '@/app/actions/get-equipment';
 
 export default async function Home({ params }: { params: any }) {
-  const equipment = await getEquipmentByIndex(params.branch, params.id)
+  const equipment = await getEquipmentByIndex(params.branch, params.id);
+  console.log(equipment)
   return (
-    <>
-      <span>оборудование с id: {params.id}, {params.branch}</span>
-    </>
+    <div>
+      Оборудование:
+      <div>
+        {equipment.id} 
+        {equipment.label}
+        {equipment.address}
+        {equipment.equipment}
+      </div>
+    </div>
   );
 }
