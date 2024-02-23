@@ -1,5 +1,7 @@
 'use client';
 
+import { Branch } from '@/app/interface/branch';
+
 import { useState } from 'react';
 
 import {branches} from '@/app/mockdata/branches';
@@ -61,11 +63,11 @@ const AccordionUi = () => {
         </ListItem>
         <AccordionBody className="py-1">
           <List className="p-0 max-h-[28rem] overflow-y-auto">
-            {branches.map((item) => (
+            {branches.map((item: Branch) => (
               <BranchItem 
                 key={item.id}
                 id={item.id}
-                href={item.href}
+                path={item.path}
                 label={item.label}
               />
             ))}

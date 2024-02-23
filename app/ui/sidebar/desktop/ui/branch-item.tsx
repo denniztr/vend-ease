@@ -5,15 +5,15 @@ import { ListItem } from '@material-tailwind/react';
 
 interface BranchItemProps {
   id: number;
-  href: string;
+  path: string;
   label: string;
 }
 
-const BranchItem: React.FC<BranchItemProps> = ({ id, href, label }) => {
+const BranchItem: React.FC<BranchItemProps> = ({ id, path, label }) => {
   const router = useRouter();
   
   const handleClick = () => {
-    router.push(`/dashboard/${href}`);
+    router.push(`/dashboard/${path}`);
   };
 
   return <ListItem onClick={handleClick}>{label}</ListItem>;
