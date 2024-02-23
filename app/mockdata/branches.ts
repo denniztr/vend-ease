@@ -9,6 +9,7 @@ export const branches: any = [
         label: 'Больница-1',
         address: 'Великие Луки, ул. Больничная 10',
         equipment: 'Saeco-400',
+        serial_number: '82611782',
         service: [
           {
             id: 1001,
@@ -22,6 +23,7 @@ export const branches: any = [
         label: 'Больница-2',
         address: 'Великие Луки, ул. Больничная 10',
         equipment: 'Saeco-600',
+        serial_number: '82611782',
         service: [
           {
             id: 1001,
@@ -35,6 +37,7 @@ export const branches: any = [
         label: 'Стройсам-1',
         address: 'Великие Луки, 3 Ударной Армии, 66',
         equipment: 'Necta Opera',
+        serial_number: '82611782',
         service: [
           {
             id: 1001,
@@ -48,6 +51,7 @@ export const branches: any = [
         label: 'Стройсам-2',
         address: 'Великие Луки, 3 Ударной Армии, 66',
         equipment: 'Saeco Снэк',
+        serial_number: '82611782',
         service: [
           {
             id: 1001,
@@ -73,6 +77,7 @@ export const branches: any = [
         label: 'Лента-1',
         address: 'Псков, ул. Труда 54',
         equipment: 'Necta Canto',
+        serial_number: '82611782',
         service: [
           {
             id: 2001,
@@ -86,6 +91,7 @@ export const branches: any = [
         label: 'Лента-2',
         address: 'Псков, ул. Труда 54',
         equipment: 'Necta Touch',
+        serial_number: '82611782',
         service: [
           {
             id: 2002,
@@ -99,6 +105,7 @@ export const branches: any = [
         label: 'Империал',
         address: 'Псков, ул. Коммунальная 41',
         equipment: 'Saeco-400',
+        serial_number: '82611782',
         service: [
           {
             id: 2002,
@@ -112,11 +119,26 @@ export const branches: any = [
         label: 'Авторынок',
         address: 'Псков, ул. Инженерная 102',
         equipment: 'Saeco-400',
+        serial_number: '82611782',
         service: [
           {
             id: 2002,
             user: 'Дмитрий Иванченко',
             phone: '+79991675409',
+          },
+        ],
+      },
+      {
+        id: 205,
+        label: 'Кофейня Империал',
+        address: 'Псков, ул. Коммунальная 41',
+        equipment: 'Franke',
+        serial_number: '82611782',
+        service: [
+          {
+            id: 2001,
+            user: 'Алексей Курилкин',
+            phone: '+790000000',
           },
         ],
       },

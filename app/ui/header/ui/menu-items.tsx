@@ -9,12 +9,12 @@ interface MenuItemsProps {
 const MenuItems: React.FC<MenuItemsProps> = ({ branch }) => {
   return (
     <MenuList>
-      <Input
+      {/* <Input
         label="Поиск"
         containerProps={{
           className: 'mb-2',
         }}
-      />
+      /> */}
       <div className="max-h-[20rem] overflow-y-auto">
         {branch.equipments.map((item) => (
           <Link
