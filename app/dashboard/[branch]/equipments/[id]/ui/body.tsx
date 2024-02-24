@@ -2,6 +2,7 @@ import { Branch } from '@/app/interface/branch';
 import PrimaryImage from '@/app/ui/image/image';
 
 
+
 interface BodyProps {
   equipment: Branch;
 }
