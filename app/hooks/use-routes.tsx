@@ -10,6 +10,7 @@ import {
   PowerIcon,
   HomeIcon,
   MapIcon,
+  CalendarIcon
 } from '@heroicons/react/24/solid';
 
 const useRoutes = () => {
@@ -26,6 +27,11 @@ const useRoutes = () => {
         label: 'Карта',
         href: '/dashboard/map',
         iconPreffix: MapIcon,
+      },
+      {
+        label: 'Календарь',
+        href: '/dashboard/calendar',
+        iconPreffix: CalendarIcon,
       },
       {
         label: 'Сообщения',
@@ -49,7 +55,7 @@ const useRoutes = () => {
         onClick: () => {},
       },
     ],
-    [pathname]
+    []
   );
   
   return routes;

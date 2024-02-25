@@ -1,10 +1,9 @@
-'use client';
+import { Branch } from '@/app/interface/branch';
 
-import { branches } from '../mockdata/branches';
+import { branches } from '@/app/mockdata/branches';
 
-const getBranchByIndex = (branchIndex: string) => {
-  const branch = branches.find((item) => item.href === branchIndex)
-  return branch
+const getBranchByIndex = async (branch: string) => {
+  return branches.find((item: Branch) => item.path === branch);
 };
 
 export default getBranchByIndex;
