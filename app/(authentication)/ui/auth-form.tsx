@@ -30,9 +30,20 @@ export const AuthForm = () => {
     },
   });
 
-  const onSubmit = () => {
-    // router.push('/dashboard');
-    console.log('onsubmit')
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    if (data.name === '') {
+      console.log('пустое поле name')
+      return
+    }
+    if (data.email === '') {
+      console.log('пустое поле email')
+      return
+    }
+    if (data.password === '') {
+      console.log('пустое поле password')
+      return
+    }
+    console.log(data)
   };
 
   return (
@@ -40,16 +51,33 @@ export const AuthForm = () => {
       <div className="bg-white px-4 py-6 shadow rounded sm:px-10">
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           {variant === 'REGISTER' && (
-            <PrimaryInput label="Имя" type="text" variant="standard" />
+            <PrimaryInput 
+              id='name' 
+              label="Имя" 
+              type="text" 
+              variant="standard" 
+              register={register}
+            />
           )}
           <PrimaryInput
+            id='email'
             label="Электронная почта"
             type="email"
             variant="standard"
+            register={register}
           />
-          <PrimaryInput label="Пароль" type="password" variant="standard" />
+          <PrimaryInput 
+            id='password' 
+            label="Пароль" 
+            type="password" 
+            variant="standard" 
+            register={register}
+          />
           <div className="py-6">
-            <PrimaryButton type="submit" variant="filled">
+            <PrimaryButton 
+              type="submit" 
+              variant="filled"
+            >
               {variant === 'REGISTER' ? 'Зарегистрироваться' : 'Войти'}
             </PrimaryButton>
           </div>
