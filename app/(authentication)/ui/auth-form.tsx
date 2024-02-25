@@ -4,6 +4,8 @@ import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 
+import toast from 'react-hot-toast';
+
 import PrimaryInput from '@/app/ui/input';
 import PrimaryButton from '@/app/ui/button';
 
@@ -31,19 +33,12 @@ export const AuthForm = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    if (data.name === '') {
-      console.log('пустое поле name')
-      return
+    if (data.name === '' || data.email === '' || data.password === '') {
+      return toast.error('Заполните обязательные поля');
     }
-    if (data.email === '') {
-      console.log('пустое поле email')
-      return
-    }
-    if (data.password === '') {
-      console.log('пустое поле password')
-      return
-    }
-    console.log(data)
+
+    toast.success('Успешная авторизация');
+    router.push('/dashboard');
   };
 
   return (
@@ -51,33 +46,30 @@ export const AuthForm = () => {
       <div className="bg-white px-4 py-6 shadow rounded sm:px-10">
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           {variant === 'REGISTER' && (
-            <PrimaryInput 
-              id='name' 
-              label="Имя" 
-              type="text" 
-              variant="standard" 
+            <PrimaryInput
+              id="name"
+              label="Имя"
+              type="text"
+              variant="standard"
               register={register}
             />
           )}
           <PrimaryInput
-            id='email'
+            id="email"
             label="Электронная почта"
             type="email"
             variant="standard"
             register={register}
           />
-          <PrimaryInput 
-            id='password' 
-            label="Пароль" 
-            type="password" 
-            variant="standard" 
+          <PrimaryInput
+            id="password"
+            label="Пароль"
+            type="password"
+            variant="standard"
             register={register}
           />
           <div className="py-6">
-            <PrimaryButton 
-              type="submit" 
-              variant="filled"
-            >
+            <PrimaryButton type="submit" variant="filled">
               {variant === 'REGISTER' ? 'Зарегистрироваться' : 'Войти'}
             </PrimaryButton>
           </div>
