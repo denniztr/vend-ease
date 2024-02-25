@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 
 import PrimaryInput from '@/app/ui/input';
 import PrimaryButton from '@/app/ui/button';
@@ -17,14 +18,27 @@ export const AuthForm = () => {
     if (variant === 'REGISTER') setVariant('LOGIN');
   }, [variant]);
 
-  const handleClick = () => {
-    router.push('/dashboard')
-  }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+  });
+
+  const onSubmit = () => {
+    // router.push('/dashboard');
+    console.log('onsubmit')
+  };
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="bg-white px-4 py-6 shadow rounded sm:px-10">
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           {variant === 'REGISTER' && (
             <PrimaryInput label="Имя" type="text" variant="standard" />
           )}
@@ -35,7 +49,7 @@ export const AuthForm = () => {
           />
           <PrimaryInput label="Пароль" type="password" variant="standard" />
           <div className="py-6">
-            <PrimaryButton onClick={handleClick}>
+            <PrimaryButton type="submit" variant="filled">
               {variant === 'REGISTER' ? 'Зарегистрироваться' : 'Войти'}
             </PrimaryButton>
           </div>
