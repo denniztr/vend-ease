@@ -2,12 +2,15 @@
 
 import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 
 import toast from 'react-hot-toast';
 
 import PrimaryInput from '@/app/ui/input';
 import PrimaryButton from '@/app/ui/button';
+
+import axios from 'axios';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -33,12 +36,15 @@ export const AuthForm = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    if (data.name === '' || data.email === '' || data.password === '') {
-      return toast.error('Заполните обязательные поля');
+    if (variant === 'LOGIN') {
+      console.log('login');
+    } else if (variant === 'REGISTER') {
+      console.log(data)
+      // axios.post('/api/register', data)
+      // .then((cb) => console.log(cb))
+      // .catch(() => toast.error('an error occured'))
+      // .finally(() => console.log('finally'))
     }
-
-    toast.success('Успешная авторизация');
-    router.push('/dashboard');
   };
 
   return (
@@ -46,13 +52,15 @@ export const AuthForm = () => {
       <div className="bg-white px-4 py-6 shadow rounded sm:px-10">
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           {variant === 'REGISTER' && (
-            <PrimaryInput
-              id="name"
-              label="Имя"
-              type="text"
-              variant="standard"
-              register={register}
-            />
+            <>
+              <PrimaryInput
+                id="name"
+                label="Имя"
+                type="text"
+                variant="standard"
+                register={register}
+              />
+          </>
           )}
           <PrimaryInput
             id="email"
