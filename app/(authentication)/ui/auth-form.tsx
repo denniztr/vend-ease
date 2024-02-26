@@ -37,16 +37,25 @@ export const AuthForm = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setLoading(true)
+    setLoading(true);
+
     if (variant === 'LOGIN') {
-      console.log('login');
-    } else if (variant === 'REGISTER') {
-      console.log(data);
-      axios
-        .post('/api/register', data)
-        .then((cb) => toast.success('Успешная регистрация'))
-        .catch((error) => toast.error(error.response.data))
-        .finally(() => setLoading(false));
+      signIn('credentials', {...data, redirect: false})
+      .then((cb) => {
+        cb?.error && toast.error(cb.error)
+        
+        cb?.status === 200 && toast.success('Успешная авторизация')
+      })
+      .finally(() => setLoading(false))
+    }
+
+    if (variant === 'REGISTER') {
+      axios.post('/api/register', data)
+      .then((cb) => {
+        cb.status === 200 && toast.success('Успешная регистрация')
+      })
+      .catch((error) => toast.error(error.response.data))
+      .finally(() => setLoading(false))
     }
   };
 

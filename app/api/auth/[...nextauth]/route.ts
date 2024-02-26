@@ -14,8 +14,9 @@ export const authOptions: AuthOptions = {
         password: { label: 'password', type: 'password' },
       },
       async authorize(credentials) {
+
         if (!credentials?.email || !credentials?.password) {
-          throw new Error('Invalid credentials NEXTAUTH ERROR');
+          throw new Error('Проверьте правильность введённых данных');
         }
 
         const user = await prisma.user.findUnique({
@@ -23,16 +24,18 @@ export const authOptions: AuthOptions = {
             email: credentials.email,
           },
         });
+
         if (!user || !user?.hashedPassword) {
-          throw new Error('No user found NEXTAUTH ERROR');
+          throw new Error('Такой пользователь не существует');
         }
 
         const passwordMatch = await bcrypt.compare(
           credentials.password,
           user.hashedPassword
         );
+
         if (!passwordMatch) {
-          throw new Error('Incorrect password NEXTAUTH ERROR');
+          throw new Error('Неверный пароль');
         }
 
         return user;
@@ -47,4 +50,4 @@ export const authOptions: AuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST};
+export { handler as GET, handler as POST };
