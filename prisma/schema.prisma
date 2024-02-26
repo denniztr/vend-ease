@@ -63,9 +63,9 @@ model CompanyUsers {
 model Company {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   label String
-  email String
-  address String
-  path String
+  email String?
+  address String?
+  path String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

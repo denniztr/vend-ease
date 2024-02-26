@@ -4,7 +4,7 @@ import { Branch } from '@/app/interface/branch';
 
 import { useState } from 'react';
 
-import {branches} from '@/app/mockdata/branches';
+import { branches } from '@/app/mockdata/branches';
 import useRoutes from '@/app/hooks/use-routes';
 
 import SidebarItem from './item';
@@ -42,7 +42,7 @@ const AccordionUi = () => {
         icon={
           <ChevronDownIcon
             strokeWidth={2.5}
-            className={`mx-auto h-4 w-4 transition-transform ${
+            className={`mx-auto h-4 w-4 transition-transform  ${
               open && 'rotate-180'
             }`}
           />
@@ -64,7 +64,7 @@ const AccordionUi = () => {
         <AccordionBody className="py-1">
           <List className="p-0 max-h-[28rem] overflow-y-auto">
             {branches.map((item: Branch) => (
-              <BranchItem 
+              <BranchItem
                 key={item.id}
                 id={item.id}
                 path={item.path}
