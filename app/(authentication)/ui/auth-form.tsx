@@ -1,7 +1,8 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { signIn, useSession } from 'next-auth/react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 
 import toast from 'react-hot-toast';
@@ -9,11 +10,24 @@ import toast from 'react-hot-toast';
 import PrimaryInput from '@/app/ui/input';
 import PrimaryButton from '@/app/ui/button';
 
+import axios from 'axios';
+
 type Variant = 'LOGIN' | 'REGISTER';
 
 export const AuthForm = () => {
   const router = useRouter();
+  const session = useSession();
   const [variant, setVariant] = useState<Variant>('LOGIN');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    console.log(session);
+
+    if (session?.status === 'authenticated') {
+      router.push('/dashboard')
+    }
+
+  }, [session, router]);
 
   const toggleVariant = useCallback(() => {
     if (variant === 'LOGIN') setVariant('REGISTER');
@@ -33,12 +47,27 @@ export const AuthForm = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    if (data.name === '' || data.email === '' || data.password === '') {
-      return toast.error('Заполните обязательные поля');
+    setLoading(true);
+
+    if (variant === 'LOGIN') {
+      signIn('credentials', { ...data, redirect: false })
+        .then((cb) => {
+          cb?.error && toast.error(cb.error);
+
+          cb?.status === 200 && toast.success('Успешная авторизация');
+        })
+        .finally(() => setLoading(false));
     }
 
-    toast.success('Успешная авторизация');
-    router.push('/dashboard');
+    if (variant === 'REGISTER') {
+      axios
+        .post('/api/register', data)
+        .then((cb) => {
+          cb.status === 200 && toast.success('Успешная регистрация');
+        })
+        .catch((error) => toast.error(error.response.data))
+        .finally(() => setLoading(false));
+    }
   };
 
   return (
@@ -46,13 +75,15 @@ export const AuthForm = () => {
       <div className="bg-white px-4 py-6 shadow rounded sm:px-10">
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           {variant === 'REGISTER' && (
-            <PrimaryInput
-              id="name"
-              label="Имя"
-              type="text"
-              variant="standard"
-              register={register}
-            />
+            <>
+              <PrimaryInput
+                id="name"
+                label="Имя"
+                type="text"
+                variant="standard"
+                register={register}
+              />
+            </>
           )}
           <PrimaryInput
             id="email"
@@ -69,7 +100,7 @@ export const AuthForm = () => {
             register={register}
           />
           <div className="py-6">
-            <PrimaryButton type="submit" variant="filled">
+            <PrimaryButton type="submit" variant="filled" loading={loading}>
               {variant === 'REGISTER' ? 'Зарегистрироваться' : 'Войти'}
             </PrimaryButton>
           </div>

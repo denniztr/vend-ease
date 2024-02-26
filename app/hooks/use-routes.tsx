@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { usePathname } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 
 import {
   UserCircleIcon,
@@ -52,7 +53,7 @@ const useRoutes = () => {
         label: 'Выход',
         href: '#',
         iconPreffix: PowerIcon,
-        onClick: () => {},
+        onClick: () => signOut(),
       },
     ],
     []

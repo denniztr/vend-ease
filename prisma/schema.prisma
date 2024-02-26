@@ -16,24 +16,15 @@ datasource db {
 model User {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String 
-  surname String
+  surname String?
   email String @unique
   emailVerifed DateTime?
-  phone String
+  phone String?
   image String?
   hashedPassword String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  role Role @default(USER)
-
-  companyId String @db.ObjectId
-  company Company @relation(fields: [companyId], references: [id])
-
-  equipmentIds String[] @db.ObjectId
-  equipments Equipment[] @relation(fields: [equipmentIds], references: [id])
-
-  branchId String @db.ObjectId
-  branch Branch @relation(fields: [branchId], references: [id])
+  role Role? @default(USER)
   
   account Account[]
 }
@@ -56,58 +47,6 @@ model Account {
 
   @@unique([provider, providerAccountId])
 }
-
-model Equipment {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  label String
-  address String
-  name String
-  serial_number String
-  images String[]
-  location String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  userIds String[] @db.ObjectId
-  users User[] @relation(fields: [userIds], references: [id])
-
-  branchId String @db.ObjectId
-  branches Branch @relation(fields: [branchId], references: [id])
-
-  companyId String @db.ObjectId
-  company Company @relation(fields: [companyId], references: [id])
-}
-
-model Branch {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  path String?
-  label String
-  address String 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  equipments Equipment[]
-  users User[]
-
-  companyId String @db.ObjectId
-  company Company @relation(fields: [companyId], references: [id])
-}
-
-
-model Company {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  label String
-  address String
-  image String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  users User[]
-  branches Branch[]
-  equipments Equipment[]
-}
-
 
 enum Role {
   USER

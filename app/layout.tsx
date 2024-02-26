@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 
 import ToasterContext from './context/toaster';
+import AuthContext from './context/auth-provider';
 
 import './globals.css';
 
@@ -21,7 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={sans.className}><ToasterContext />{children}</body>
+      <body className={sans.className}>
+        <AuthContext>
+          <ToasterContext />
+          {children}
+        </AuthContext>
+      </body>
     </html>
   );
 }

@@ -9,9 +9,13 @@ interface BranchItemProps {
   label: string;
 }
 
-const BranchItem: React.FC<BranchItemProps> = ({ id, path, label }) => {
+const BranchItem: React.FC<BranchItemProps> = ({
+  id,
+  path,
+  label,
+}) => {
   const router = useRouter();
-  
+
   const handleClick = () => {
     router.push(`/dashboard/${path}`);
   };
