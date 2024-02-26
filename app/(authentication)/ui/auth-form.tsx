@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 
 import toast from 'react-hot-toast';
@@ -16,8 +16,18 @@ type Variant = 'LOGIN' | 'REGISTER';
 
 export const AuthForm = () => {
   const router = useRouter();
+  const session = useSession();
   const [variant, setVariant] = useState<Variant>('LOGIN');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    console.log(session);
+
+    if (session?.status === 'authenticated') {
+      router.push('/dashboard')
+    }
+
+  }, [session, router]);
 
   const toggleVariant = useCallback(() => {
     if (variant === 'LOGIN') setVariant('REGISTER');
@@ -40,22 +50,23 @@ export const AuthForm = () => {
     setLoading(true);
 
     if (variant === 'LOGIN') {
-      signIn('credentials', {...data, redirect: false})
-      .then((cb) => {
-        cb?.error && toast.error(cb.error)
-        
-        cb?.status === 200 && toast.success('Успешная авторизация')
-      })
-      .finally(() => setLoading(false))
+      signIn('credentials', { ...data, redirect: false })
+        .then((cb) => {
+          cb?.error && toast.error(cb.error);
+
+          cb?.status === 200 && toast.success('Успешная авторизация');
+        })
+        .finally(() => setLoading(false));
     }
 
     if (variant === 'REGISTER') {
-      axios.post('/api/register', data)
-      .then((cb) => {
-        cb.status === 200 && toast.success('Успешная регистрация')
-      })
-      .catch((error) => toast.error(error.response.data))
-      .finally(() => setLoading(false))
+      axios
+        .post('/api/register', data)
+        .then((cb) => {
+          cb.status === 200 && toast.success('Успешная регистрация');
+        })
+        .catch((error) => toast.error(error.response.data))
+        .finally(() => setLoading(false));
     }
   };
 
