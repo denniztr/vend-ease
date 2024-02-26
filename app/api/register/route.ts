@@ -7,13 +7,17 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { email, name, password } = body;
 
+    if (email === '' || name === '' || password === '') return new NextResponse('Заполните обязательные поля', { status: 400 });
+
+    if (password.length < 5)  return new NextResponse('Ваш пароль небезопасен, введите минимум 5 символов', { status: 400 });
+
     const existingEmail = await prisma.user.findUnique({
       where: {
         email: email,
       },
     });
 
-    if (existingEmail) throw new Error('email already exist');
+    if (existingEmail) return new NextResponse('Пользователь с такой электронной почтой уже существует', { status: 400 });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -28,6 +32,6 @@ export async function POST(request: Request) {
     return NextResponse.json(user);
   } catch (error: any) {
     console.log(error, 'REGISTRATION_ERROR');
-    return new NextResponse('Interntal Error', { status: 500 });
+    return new NextResponse('Internal Error', { status: 500 });
   }
 }

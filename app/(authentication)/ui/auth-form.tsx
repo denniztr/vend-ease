@@ -17,6 +17,7 @@ type Variant = 'LOGIN' | 'REGISTER';
 export const AuthForm = () => {
   const router = useRouter();
   const [variant, setVariant] = useState<Variant>('LOGIN');
+  const [loading, setLoading] = useState(false);
 
   const toggleVariant = useCallback(() => {
     if (variant === 'LOGIN') setVariant('REGISTER');
@@ -36,14 +37,16 @@ export const AuthForm = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setLoading(true)
     if (variant === 'LOGIN') {
       console.log('login');
     } else if (variant === 'REGISTER') {
-      console.log(data)
-      // axios.post('/api/register', data)
-      // .then((cb) => console.log(cb))
-      // .catch(() => toast.error('an error occured'))
-      // .finally(() => console.log('finally'))
+      console.log(data);
+      axios
+        .post('/api/register', data)
+        .then((cb) => toast.success('Успешная регистрация'))
+        .catch((error) => toast.error(error.response.data))
+        .finally(() => setLoading(false));
     }
   };
 
@@ -60,7 +63,7 @@ export const AuthForm = () => {
                 variant="standard"
                 register={register}
               />
-          </>
+            </>
           )}
           <PrimaryInput
             id="email"
@@ -77,7 +80,7 @@ export const AuthForm = () => {
             register={register}
           />
           <div className="py-6">
-            <PrimaryButton type="submit" variant="filled">
+            <PrimaryButton type="submit" variant="filled" loading={loading}>
               {variant === 'REGISTER' ? 'Зарегистрироваться' : 'Войти'}
             </PrimaryButton>
           </div>
