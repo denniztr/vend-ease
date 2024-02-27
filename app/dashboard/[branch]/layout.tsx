@@ -12,7 +12,7 @@ export default async function BranchPage({
 
   return (
     <main className="h-full flex flex-col">
-      <Header branch={branch} />
+      {/* <Header branch={branch} /> */}
       <div>{children}</div>
     </main>
   );

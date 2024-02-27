@@ -1,12 +1,30 @@
-import AccordionUi from "./ui/accordion";
+import Logo from '../../logo';
+import SidebarMenuList from './ui/sidebar-menu-list';
+
+import {
+  PlusIcon,
+  ArrowRightStartOnRectangleIcon,
+} from '@heroicons/react/24/solid';
 
 const SidebarDesktop = () => {
   return (
-    <div className=" hidden md:block md:h-full md:bg-white md:rounded-md md:shadow-xl md:shadow-blue-gray-900/5 ">
-      <div className="mb-5 p-4">
-        <h5 className="font-semibold text-gray-700">VendEase</h5>
+    <div className="hidden md:block md:h-full">
+      <div className="h-full w-full flex flex-col justify-between">
+        <div className="flex flex-col items-center gap-20">
+          <div className="px-2">
+            <Logo />
+          </div>
+          <SidebarMenuList />
+        </div>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 rounded-xl bg-white flex flex-nowrap justify-center items-center">
+            <PlusIcon className="p-2 text-black  cursor-pointer transition duration-500 hover:rotate-90" />
+          </div>
+          <div className="w-8 h-8 rounded-xl bg-gray-50/15 flex flex-nowrap justify-center items-center ">
+            <ArrowRightStartOnRectangleIcon className="p-2 text-white cursor-pointer" />
+          </div>
+        </div>
       </div>
-      <AccordionUi />
     </div>
   );
 };

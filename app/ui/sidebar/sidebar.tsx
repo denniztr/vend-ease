@@ -2,7 +2,7 @@ import DesktopSidebar from './desktop/desktop-sidebar';
 
 const Sidebar = () => {
   return (
-    <div className="h-full p-2.5 ">
+    <div className="h-full py-8 bg-black">
       <DesktopSidebar />
     </div>
   );
