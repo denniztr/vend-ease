@@ -27,7 +27,6 @@ model User {
   role Role? @default(USER)
   
   account Account[]
-  company CompanyUsers[]
 }
 
 model Account {
@@ -49,44 +48,14 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model CompanyUsers {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  companyId String @db.ObjectId
-  userId String @db.ObjectId
-  branchId String @db.ObjectId
-
-  user User @relation(fields: [userId], references: [id])
-  company Company @relation(fields: [companyId], references: [id])
-  branch Branch @relation(fields: [branchId], references: [id])
-
-  @@unique([companyId, userId, branchId])
-}
-
-model Branch {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  label String
-  address String
-  path String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  companyId String   @db.ObjectId
-  company   Company  @relation(fields: [companyId], references: [id])
-
-  users CompanyUsers[]
-}
-
 model Company {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  label String
+  label String?
   email String?
   address String?
   path String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  users CompanyUsers[]
-  branches Branch[]
 }
 
 enum Role {
