@@ -1,26 +1,23 @@
 import Link from 'next/link';
-
-import { ListItem, ListItemPrefix } from '@material-tailwind/react';
+import clsx from 'clsx';
 
 interface SidebarItemProps {
   label: string;
   href: string;
   iconPreffix: any;
+  active?: boolean
 }
 
 const SidebarItem: React.FC<SidebarItemProps> = ({
   label,
   href,
-  iconPreffix: IconPreffix,
+  iconPreffix: Icon,
+  active
 }) => {
   return (
     <Link href={href}>
-      <ListItem>
-        <ListItemPrefix>
-          <IconPreffix className="h-5 w-5" />
-        </ListItemPrefix>
-        <span>{label}</span>
-      </ListItem>
+      <Icon className={clsx(`w-6 h-6 text-gray-500 transition hover:text-white`, active && 'text-white')} />
+      <span className="sr-only">{label}</span>
     </Link>
   );
 };
