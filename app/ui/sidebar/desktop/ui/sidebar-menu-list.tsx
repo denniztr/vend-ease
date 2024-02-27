@@ -7,7 +7,7 @@ const SidebarMenuList = () => {
   const routes = useRoutes();
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       {routes.map((item) => (
         <SidebarItem
           key={item.label}

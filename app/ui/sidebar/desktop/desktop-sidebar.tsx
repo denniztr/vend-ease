@@ -17,11 +17,11 @@ const SidebarDesktop = () => {
           <SidebarMenuList />
         </div>
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-white flex flex-nowrap justify-center items-center cursor-pointer">
-            <PlusIcon className="p-2 text-black" />
+          <div className="w-8 h-8 rounded-xl bg-white flex flex-nowrap justify-center items-center">
+            <PlusIcon className="p-2 text-black  cursor-pointer transition duration-500 hover:rotate-90" />
           </div>
-          <div className="w-10 h-10 rounded-xl bg-gray-50/15 flex flex-nowrap justify-center items-center cursor-pointer">
-            <ArrowRightStartOnRectangleIcon className="p-2 text-white" />
+          <div className="w-8 h-8 rounded-xl bg-gray-50/15 flex flex-nowrap justify-center items-center ">
+            <ArrowRightStartOnRectangleIcon className="p-2 text-white cursor-pointer" />
           </div>
         </div>
       </div>
