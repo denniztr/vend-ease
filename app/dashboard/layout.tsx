@@ -1,4 +1,5 @@
 import Sidebar from '@/app/ui/sidebar/sidebar';
+import Header from '@/app/ui/header/header';
 import getCurrentUser from '@/app/actions/get-current-user';
 
 export default async function Layout({
@@ -12,7 +13,12 @@ export default async function Layout({
       <div className="flex-none md:w-20">
         <Sidebar />
       </div>
-      <div className="flex-grow p-6 md:overflow-y-auto md:p-8">{children}</div>
+      <div className="flex flex-col w-full">
+        <Header />
+        <div className="flex-grow p-6 md:overflow-y-auto md:p-8">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }
