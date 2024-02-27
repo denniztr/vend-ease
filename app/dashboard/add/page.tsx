@@ -13,12 +13,14 @@ export default function Home() {
 
   const { register, handleSubmit } = useForm<FieldValues>({
     defaultValues: {
+      name: '',
       city: '',
       address: '',
     }
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    console.log('in', data)
     axios.post('/api/company', data)
     .then((cb) => console.log(cb))
     .catch((error) => console.log(error))
@@ -34,6 +36,13 @@ export default function Home() {
       </div>
       <div className="mt-6">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+        <PrimaryInput
+            id="name"
+            label="Название компании"
+            type="text"
+            variant="outlined"
+            register={register}
+          />
           <PrimaryInput
             id="city"
             label="Город"

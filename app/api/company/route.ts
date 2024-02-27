@@ -4,10 +4,11 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { city, address } = body;
+    const { name, city, address } = body;
 
     const company = await prisma.company.create({
       data: {
+        name,
         city,
         address
       }
