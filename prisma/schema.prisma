@@ -53,11 +53,27 @@ model CompanyUsers {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   companyId String @db.ObjectId
   userId String @db.ObjectId
+  branchId String @db.ObjectId
 
-  company Company @relation(fields: [companyId], references: [id])
   user User @relation(fields: [userId], references: [id])
+  company Company @relation(fields: [companyId], references: [id])
+  branch Branch @relation(fields: [branchId], references: [id])
 
-  @@unique([companyId, userId])
+  @@unique([companyId, userId, branchId])
+}
+
+model Branch {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  label String
+  address String
+  path String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  companyId String   @db.ObjectId
+  company   Company  @relation(fields: [companyId], references: [id])
+
+  users CompanyUsers[]
 }
 
 model Company {
@@ -70,6 +86,7 @@ model Company {
   updatedAt DateTime @updatedAt
 
   users CompanyUsers[]
+  branches Branch[]
 }
 
 enum Role {
