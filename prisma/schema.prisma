@@ -50,7 +50,7 @@ model Account {
 
 model Company {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  label String?
+  city String?
   email String?
   address String?
   path String?

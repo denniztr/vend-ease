@@ -4,18 +4,19 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { label, address } = body;
+    const { city, address } = body;
 
     const company = await prisma.company.create({
       data: {
-        label,
+        city,
         address
       }
     })
 
-    return company
+    return NextResponse.json(company);
     
   } catch (error: any) {
-    console.log('Internal Error', error)
+    console.log(error, 'ADDCOMPANY_ERROR')
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 }); 
   }
 }

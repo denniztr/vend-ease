@@ -35,7 +35,7 @@ export default function Home() {
       <div className="mt-6">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <PrimaryInput
-            id="label"
+            id="city"
             label="Город"
             type="text"
             variant="outlined"
