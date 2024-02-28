@@ -1,5 +1,11 @@
-'use client'
+import SelectDefault from '@/app/ui/select';
 
 export default function Home() {
-  return <h1>dashboard</h1>;
+  return (
+    <div className="h-full">
+      <div className="flex flex-row">
+        <SelectDefault />
+      </div>
+    </div>
+  );
 }

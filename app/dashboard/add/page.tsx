@@ -16,27 +16,30 @@ export default function Home() {
       name: '',
       city: '',
       address: '',
-    }
+    },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log('in', data)
-    axios.post('/api/company', data)
-    .then((cb) => console.log(cb))
-    .catch((error) => console.log(error))
+    console.log('in', data);
+    axios
+      .post('/api/company', data)
+      .then((cb) => console.log(cb))
+      .catch((error) => console.log(error));
   };
 
   return (
-    <div>
-      <h2 className="text4xl text-gray-600 font-semibold tracking-normal">
-        Добавить
-      </h2>
-      <div>
-        <SelectDefault />
+    <div className="">
+      <div className="flex gap-6 p-2 items-center ">
+        <h2 className="text-2xl text-gray-600 font-semibold tracking-normal">
+          Добавить
+        </h2>
+        <div>
+          <SelectDefault />
+        </div>
       </div>
       <div className="mt-6">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <PrimaryInput
+          <PrimaryInput
             id="name"
             label="Название компании"
             type="text"
