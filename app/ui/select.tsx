@@ -2,6 +2,7 @@
 
 import { Select, Option } from '@material-tailwind/react';
 
+
 const SelectDefault = () => {
   return (
     <div className="w-40">
@@ -12,14 +13,8 @@ const SelectDefault = () => {
           unmount: { y: 25 },
         }}
       >
-        <Option>Великие Луки</Option>
-        <Option>Псков</Option>
-        <Option>Санкт Петербург</Option>
-        <Option>Москва</Option>
-        <Option>Смоленск</Option>
-        <Option>Тверь</Option>
-        <Option>Брянск</Option>
-        <Option>Сочи</Option>
+        <Option>Вариант 1</Option>
+        <Option>Вариант 2</Option>
       </Select>
     </div>
   );

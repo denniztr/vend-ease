@@ -2,6 +2,8 @@
 
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 
+import { Option } from '@material-tailwind/react';
+
 import SelectDefault from '@/app/ui/select';
 import PrimaryInput from '@/app/ui/input';
 import PrimaryButton from '@/app/ui/button';

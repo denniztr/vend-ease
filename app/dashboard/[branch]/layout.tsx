@@ -8,7 +8,7 @@ export default async function BranchPage({
   params: any;
 }) {
   const branch = await getBranchByIndex(params.branch);
-
+  
   return (
     <main className="h-full flex flex-col">
       <div>{children}</div>
