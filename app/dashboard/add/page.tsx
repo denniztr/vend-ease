@@ -8,6 +8,8 @@ import PrimaryButton from '@/app/ui/button';
 
 import axios from 'axios';
 
+type Variant = 'BRANCH' | 'EQUIPMENT';
+
 export default function Home() {
   const loading = false;
 
@@ -33,9 +35,6 @@ export default function Home() {
         <h2 className="text-2xl text-gray-600 font-semibold tracking-normal">
           Добавить
         </h2>
-        <div>
-          <SelectDefault />
-        </div>
       </div>
       <div className="mt-6">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>

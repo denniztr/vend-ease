@@ -1,5 +1,4 @@
 import getBranchByIndex from '@/app/actions/get-branch';
-import Header from '@/app/ui/header/header';
 
 export default async function BranchPage({
   children,
@@ -12,7 +11,6 @@ export default async function BranchPage({
 
   return (
     <main className="h-full flex flex-col">
-      {/* <Header branch={branch} /> */}
       <div>{children}</div>
     </main>
   );
