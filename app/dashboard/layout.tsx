@@ -9,12 +9,12 @@ export default async function Layout({
 }) {
   const user = await getCurrentUser();
   return (
-    <div className="h-screen flex flex-col md:flex-row md:overflow-hidden bg-blue-50/20">
+    <div className="h-screen flex flex-col md:flex-row md:overflow-hidden bg-gray-300/50">
       <div className="flex-none md:w-20">
         <Sidebar />
       </div>
       <div className="flex flex-col w-full">
-        <Header />
+        <Header user={user} />
         <div className="flex-grow p-6 md:overflow-y-auto md:p-8">
           {children}
         </div>

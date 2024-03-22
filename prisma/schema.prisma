@@ -27,6 +27,7 @@ model User {
   role Role? @default(USER)
   
   account Account[]
+  branch Branch[]
 }
 
 model Account {
@@ -46,6 +47,15 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Branch {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  city String
+  address String
+
+  userIds String? @db.ObjectId
+  users User? @relation(fields: [userIds], references: [id], onDelete: Cascade)
 }
 
 model Company {

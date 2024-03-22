@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 
 import ToasterContext from './context/toaster';
 import AuthContext from './context/auth-provider';
 
 import './globals.css';
 
-const sans = Open_Sans({
+const raleway = Raleway({
   subsets: ['cyrillic'],
 });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={sans.className}>
+      <body className={raleway.className}>
         <AuthContext>
           <ToasterContext />
           {children}
