@@ -3,19 +3,19 @@
 import { useMemo } from 'react';
 import { BellAlertIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
-const UseHeaderRoutes = () => {
+const useHeaderRoutes = () => {
   const routes = useMemo(() => [
     {
       label: 'Сообщения',
-      Icon: EnvelopeIcon,
+      icon: EnvelopeIcon,
     },
     {
       label: 'Уведомления',
-      Icon: BellAlertIcon,
+      icon: BellAlertIcon,
     },
   ], []);
 
   return routes;
 };
 
-export default UseHeaderRoutes;
+export default useHeaderRoutes;
