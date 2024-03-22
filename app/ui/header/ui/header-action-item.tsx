@@ -15,12 +15,17 @@ const HeaderItem: React.FC<HeaderItemProps> = ({
   active,
 }) => {
   return (
-    <Link href="#">
-      <Icon
-        className={clsx(`w-6 h-6 text-gray-500 transition hover:text-gray-600`)}
-      />
-      <span className="sr-only">{label}</span>
-    </Link>
+    <div className="relative">
+      <div className="w-2 h-2 bg-orange-600 rounded-full absolute right-0" />
+      <Link href="#">
+        <Icon
+          className={clsx(
+            `w-6 h-6 text-gray-500 transition hover:text-gray-700`
+          )}
+        />
+        <span className="sr-only">{label}</span>
+      </Link>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import useRoutes from '@/app/hooks/use-routes';
+import useRoutes from '@/app/hooks/useRoutes';
 import SidebarItem from './sidebar-item';
 
 const SidebarMenuList = () => {

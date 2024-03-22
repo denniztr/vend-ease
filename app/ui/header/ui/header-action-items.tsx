@@ -1,6 +1,6 @@
 'use client';
 
-import useHeaderRoutes from '@/app/hooks/use-header-routes';
+import useHeaderRoutes from '@/app/hooks/useHeaderRoutes';
 import HeaderItem from './header-action-item';
 
 const HeaderActionItems = () => {

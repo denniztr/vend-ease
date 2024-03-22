@@ -1,23 +1,21 @@
 import Sidebar from '@/app/ui/sidebar/sidebar';
 import Header from '@/app/ui/header/header';
-import getCurrentUser from '@/app/actions/get-current-user';
+import getCurrentUser from '@/app/actions/getCurrentUser';
 
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getCurrentUser();
+
   return (
     <div className="h-screen flex flex-col md:flex-row md:overflow-hidden bg-gray-300/50">
       <div className="flex-none md:w-20">
         <Sidebar />
       </div>
       <div className="flex flex-col w-full">
-        <Header user={user} />
-        <div className="flex-grow p-6 md:overflow-y-auto md:p-8">
-          {children}
-        </div>
+        <Header />
+        <div className="flex-grow  md:overflow-y-auto md:p-4">{children}</div>
       </div>
     </div>
   );
