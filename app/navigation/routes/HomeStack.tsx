@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { usePathname } from 'next/navigation';
-import { signOut } from 'next-auth/react';
+
 
 import {
   UserCircleIcon,

@@ -7,13 +7,15 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
+  console.log(currentUser)
   return (
     <div className="h-screen flex flex-col md:flex-row md:overflow-hidden bg-gray-300/50">
       <div className="flex-none md:w-20">
         <Sidebar />
       </div>
       <div className="flex flex-col w-full">
-        <Header />
+        <Header user={currentUser}/>
         <div className="flex-grow  md:overflow-y-auto md:py-4 md:px-4">
           {children}
         </div>

@@ -5,9 +5,9 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, name, password } = body;
+    const { email, name, surname, password } = body;
 
-    if (email === '' || name === '' || password === '') return new NextResponse('Заполните обязательные поля', { status: 400 });
+    if (email === '' || name === '' || surname === '' || password === '') return new NextResponse('Заполните обязательные поля', { status: 400 });
 
     if (password.length < 5)  return new NextResponse('Ваш пароль небезопасен, введите минимум 5 символов', { status: 400 });
 
@@ -25,6 +25,7 @@ export async function POST(request: Request) {
       data: {
         email,
         name,
+        surname,
         hashedPassword,
       },
     });
