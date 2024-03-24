@@ -83,6 +83,13 @@ export const AuthForm = () => {
                 variant="standard"
                 register={register}
               />
+              <PrimaryInput
+                id="surname"
+                label="Фамилия"
+                type="text"
+                variant="standard"
+                register={register}
+              />
             </>
           )}
           <PrimaryInput

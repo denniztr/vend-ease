@@ -1,11 +1,15 @@
+'use client';
+
+
+import Link from 'next/link';
+import { signOut } from 'next-auth/react';
 import Logo from '../../logo';
 import SidebarMenuList from './ui/sidebarMenuList';
-import Link from 'next/link';
-
 import {
   PlusIcon,
   ArrowRightStartOnRectangleIcon,
 } from '@heroicons/react/24/solid';
+
 
 const SidebarDesktop = () => {
   return (
@@ -23,7 +27,10 @@ const SidebarDesktop = () => {
               <PlusIcon className="p-2 text-black cursor-pointer transition duration-500 hover:rotate-90" />
             </div>
           </Link>
-          <div className="w-8 h-8 rounded-xl bg-gray-50/15 flex flex-nowrap justify-center items-center ">
+          <div
+            onClick={() => signOut()}
+            className="w-8 h-8 rounded-xl bg-gray-50/15 flex flex-nowrap justify-center items-center "
+          >
             <ArrowRightStartOnRectangleIcon className="p-2 text-white cursor-pointer" />
           </div>
         </div>

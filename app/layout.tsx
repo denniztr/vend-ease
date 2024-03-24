@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 import { Raleway } from 'next/font/google';
 
-import ToasterContext from './context/toaster';
-import AuthContext from './context/auth-provider';
+import ToasterContext from './context/ToasterContext';
+import AuthContext from './context/AuthContext';
 
 import './globals.css';
 
