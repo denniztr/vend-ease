@@ -1,5 +1,5 @@
 import Logo from '../../logo';
-import SidebarMenuList from './ui/sidebar-menu-list';
+import SidebarMenuList from './ui/sidebarMenuList';
 import Link from 'next/link';
 
 import {

@@ -1,11 +1,11 @@
 'use client';
 
-import useRoutes from '@/app/hooks/useRoutes';
-import SidebarItem from './sidebar-item';
+import SidebarItem from './sidebarItem';
+import useHomeRoutes from '@/app/navigation/routes/HomeStack'
+
 
 const SidebarMenuList = () => {
-  const routes = useRoutes();
-
+  const routes = useHomeRoutes();
   return (
     <div className="flex flex-col gap-6">
       {routes.map((item) => (
