@@ -7,7 +7,6 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <div className="h-screen flex flex-col md:flex-row md:overflow-hidden bg-gray-300/50">
       <div className="flex-none md:w-20">
@@ -15,7 +14,9 @@ export default async function Layout({
       </div>
       <div className="flex flex-col w-full">
         <Header />
-        <div className="flex-grow  md:overflow-y-auto md:p-4">{children}</div>
+        <div className="flex-grow  md:overflow-y-auto md:py-4 md:px-4">
+          {children}
+        </div>
       </div>
     </div>
   );
