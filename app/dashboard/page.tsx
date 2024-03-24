@@ -7,10 +7,9 @@ import EquipmentCard from '@/app/ui/card/equipmentCard';
 import { data } from '@/app/mockdata/data';
 
 export default function Home() {
-  console.log(data);
   return (
     <div className="h-full flex flex-col gap-4">
-      <div className="h-1/2 grid grid-cols-3 gap-4">
+      <div className="h-1/2 grid grid-cols-3 gap-2">
         <TodoCard />
         <div className="flex flex-col gap-4">
           <div className=" flex flex-row justify-between gap-2">
@@ -27,9 +26,7 @@ export default function Home() {
             <MapCard />
           </div>
         </div>
-        <div>
-          <BranchesCard />
-        </div>
+        <BranchesCard />
       </div>
       <div className="h-1/2">
         <EquipmentCard />
