@@ -1,4 +1,4 @@
-import DesktopSidebar from './desktop/desktop-sidebar';
+import DesktopSidebar from './desktop/desktopSidebar';
 
 const Sidebar = () => {
   return (

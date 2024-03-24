@@ -1,8 +1,6 @@
-import SearchInput from '../input/search';
-import HeaderActionItems from './ui/header-action-items';
-import CurrentUser from './ui/current-user';
-
-import clsx from 'clsx';
+import SearchInput from '../input/searchInput';
+import HeaderActionItems from './ui/headerActionItems';
+import CurrentUser from './ui/currentUser';
 
 
 const Header = () => {
