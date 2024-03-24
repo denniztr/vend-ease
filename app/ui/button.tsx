@@ -7,8 +7,9 @@ interface ButtonPrimaryProps {
   placeholder?: string;
   variant?: 'filled' | 'outlined' | 'gradient' | 'text';
   type: 'button' | 'submit' | 'reset' | undefined;
-  onClick?: () => void
-  loading: boolean
+  onClick?: () => void;
+  loading: boolean;
+  className?: string;
 }
 
 const PrimaryButton: React.FC<ButtonPrimaryProps> = ({
@@ -17,17 +18,19 @@ const PrimaryButton: React.FC<ButtonPrimaryProps> = ({
   variant,
   type,
   onClick,
-  loading
+  loading,
+  className,
 }) => {
   return (
-    <Button 
-      placeholder={placeholder} 
-      size="md" 
-      variant={variant} 
-      fullWidth 
-      onClick={onClick} 
-      type={type} 
+    <Button
+      placeholder={placeholder}
+      size="md"
+      variant={variant}
+      fullWidth
+      onClick={onClick}
+      type={type}
       disabled={loading}
+      className={className}
     >
       {children}
     </Button>
