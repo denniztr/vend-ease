@@ -1,16 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import TodoForm from './ui/todoForm';
+import BranchForm from './ui/branchForm';
 
 export default function Home() {
-  const [variant, setVariant] = useState<String>('TODO');
+  const [variant, setVariant] = useState<String>('todo');
 
-  const handleSelectChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setVariant(event.target.value);
   };
 
   return (
-    <div className="h-full bg-white rounded-lg p-6">
+    <div className=" bg-white rounded-lg p-6">
       <div>
         <select
           name="items"
@@ -23,7 +25,10 @@ export default function Home() {
           <option value="branch">Добавить филиал</option>
         </select>
       </div>
-      <div>{variant}</div>
+      <div className="mt-4">
+        {variant === 'todo' && <TodoForm />}
+        {variant === 'branch' && <BranchForm />}
+      </div>
     </div>
   );
 }
