@@ -16,7 +16,7 @@ export default async function Layout({
       </div>
       <div className="flex flex-col w-full">
         <Header user={currentUser}/>
-        <div className="flex-grow  md:overflow-y-auto md:py-4 md:px-4">
+        <div className="flex-grow md:overflow-y-auto md:py-4 md:px-4">
           {children}
         </div>
       </div>
