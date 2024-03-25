@@ -27,7 +27,7 @@ model User {
   role Role? @default(USER)
   
   account Account[]
-
+  posts Post[]
 }
 
 model Account {
@@ -49,6 +49,17 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+model Post {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  content String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+  user User? @relation(fields: [authorId], references: [id])
+  authorId String @db.ObjectId
+}
 
 enum Role {
   USER
