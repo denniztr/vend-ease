@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse('Unauthorized', { status: 401 });
     }
-
+    console.log(currentUser)
     const newPost = await prisma.post.create({
       data: {
         title,
@@ -20,8 +20,8 @@ export async function POST(request: Request) {
         authorId: {
           connect: {
             id: currentUser.id
-          },
-        },
+          }
+        }
       },
     });
 
