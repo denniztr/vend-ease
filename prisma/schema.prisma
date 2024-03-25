@@ -27,6 +27,8 @@ model User {
   role Role? @default(USER)
   
   account Account[]
+  
+  postIds String[] @db.ObjectId
   posts Post[]
 }
 
@@ -58,7 +60,7 @@ model Post {
   updatedAt DateTime @updatedAt
   deletedAt DateTime?
 
-  user User? @relation(fields: [authorId], references: [id])
+  author User @relation(fields: [authorId], references: [id])
   authorId String @db.ObjectId
 }
 
