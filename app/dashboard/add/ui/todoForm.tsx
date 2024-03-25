@@ -26,6 +26,7 @@ const TodoForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
 
+    
     axios
       .post('/api/todo', data)
       .then((cb) => {
